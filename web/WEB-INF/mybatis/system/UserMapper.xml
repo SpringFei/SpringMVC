@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="UserMapper">
+
+    <!--表名 -->
+    <sql id="tableName">
+        sys_user
+    </sql>
+    <!-- 字段 -->
+    <sql id="Field">
+      ID,USER_CODE,USER_NAME,PASSWORD,MOBILE,WECHAT_ID,LAST_LOGIN,CREATE_BY,CREATE_DATE,UPDATE_BY,UPDATE_DATE
+    </sql>
+
+
+    <select id="getUserList" parameterType="pd" resultType="pd">
+        SELECT
+        <include refid="Field"></include>
+        FROM <include refid="tableName"></include>  WHERE 1=1
+        <!--
+        <if test="pd.PRODUCT_CODE!=null ">
+            and USER_CODE = #{pd.PRODUCT_CODE}
+        </if>
+-->
+
+        order by 		 CREATE_DATE DESC
+
+
+    </select>
+</mapper>
