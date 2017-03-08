@@ -16,7 +16,11 @@
 
     <!-- 对静态资源文件的访问  restful-->
     <mvc:resources mapping="/lib/**" location="/WEB-INF/views/lib/" />
+    <mvc:resources mapping="/lib/jquery/1.9.1/**" location="/WEB-INF/views/lib/jquery/1.9.1/" />
+    <mvc:resources mapping="lib/layer/2.4/**" location="/WEB-INF/views/lib/layer/2.4/" />
     <mvc:resources mapping="/static/**" location="/WEB-INF/views/static/" />
+    <mvc:resources mapping="/static/h-ui/js/**" location="/WEB-INF/views/static/h-ui/js/" />
+    <mvc:resources mapping="/static/h-ui.admin/js/**" location="/WEB-INF/views/static/h-ui.admin/js/" />
 
 
     <!-- 访问拦截  -->
