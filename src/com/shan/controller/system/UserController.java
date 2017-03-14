@@ -35,5 +35,21 @@ public class UserController extends BaseController {
         return "/system/userList";
     }
 
+    public String editUser(Model model){
+        return "editUser";
+    }
 
+    @RequestMapping(value = "/goAddUser",method = RequestMethod.GET)
+    public String goAddUser(Model model){
+        logger.debug("goAdd");
+        return "/system/addUser";
+    }
+
+    @RequestMapping(value = "/addUser",method = RequestMethod.POST)
+    public String addUser(Model model){
+        logger.debug("add User !");
+
+        model.addAttribute("title","新增用户");
+        return "/system/addUser";
+    }
 }
