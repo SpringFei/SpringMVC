@@ -48,6 +48,11 @@ public class UserController extends BaseController {
     @RequestMapping(value = "/addUser",method = RequestMethod.POST)
     public String addUser(Model model){
         logger.debug("add User !");
+        PageData pd = this.getPageData();
+        String userCode = pd.getString("USER_CODE");
+        logger.debug("pd :"+pd);
+        model.addAttribute("result","error");
+        model.addAttribute("msg","usercode isjno tnull !");
 
         model.addAttribute("title","新增用户");
         return "/system/addUser";

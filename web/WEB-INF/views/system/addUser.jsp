@@ -32,7 +32,7 @@
 </head>
 <body>
 <article class="page-container">
-    <form action="" method="post" class="form form-horizontal" id="form-user-add">
+    <form action="/addUser" method="post" class="form form-horizontal" id="form-user-add">
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>用户代码：</label>
             <div class="formControls col-xs-8 col-sm-9">
@@ -62,10 +62,78 @@
 
         <div class="row cl">
             <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
-                <input class="btn btn-primary radius" type="submit" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">
+                <input class="btn btn-primary radius" type="submit" value="&nbsp;&nbsp;提交2&nbsp;&nbsp;">
             </div>
         </div>
     </form>
 </article>
+
+
+<!--_footer 作为公共模版分离出去-->
+<script type="text/javascript" src="lib/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="lib/layer/2.4/layer.js"></script>
+<script type="text/javascript" src="static/h-ui/js/H-ui.min.js"></script>
+<script type="text/javascript" src="static/h-ui.admin/js/H-ui.admin.js"></script>
+<!--/_footer 作为公共模版分离出去-->
+<script type="text/javascript" src="lib/jquery.validation/1.14.0/jquery.validate.js"></script>
+<script type="text/javascript" src="lib/jquery.validation/1.14.0/validate-methods.js"></script>
+<script type="text/javascript" src="lib/jquery.validation/1.14.0/messages_zh.js"></script>
+
+<script type="text/javascript">
+    $(function(){
+       <!--  console.log("init !");-->
+        $("#form-user-add").validate({
+            rules:{
+                USER_CODE:{
+                    required:true,
+                    minlength:2,
+                    maxlength:16
+                },
+                USER_NAME:{
+                    required:true,
+                    minlength:2,
+                    maxlength:16
+                },
+
+                MOBILE:{
+                    required:true,
+                    minlength:2,
+                    maxlength:16
+                },
+                WECHAT_ID:{
+                    minlength:2,
+                    maxlength:16
+                },
+
+            },
+            onkeyup:false,
+            focusCleanup:true,
+            success:function (data) {
+                console.log("data :"+data);
+            },
+            submitHandler:function(form){
+                console.log('Save info');
+                $.ajax(
+                    {
+                        type : "POST",
+                        url :"/addUser",
+                        data : form,
+                        success : function (message) {
+                            console.log("msg "+message);
+                        },
+                        error : function (message) {
+                            console.log(message);
+                        }
+                    }
+
+                );
+
+
+
+            }
+        });
+    });
+</script>
 </body>
+
 </html>
